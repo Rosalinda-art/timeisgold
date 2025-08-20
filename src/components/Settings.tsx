@@ -368,6 +368,64 @@ const Settings: React.FC<SettingsProps> = ({
     setDaySpecificStudyWindows(updatedOverrides);
   };
 
+  // Day-specific study hours handlers
+  const handleAddDaySpecificHours = () => {
+    const validation = validateDaySpecificHours();
+    if (!validation.isValid) {
+      alert(validation.message);
+      return;
+    }
+
+    // Check if hours for this day already exists
+    const existingIndex = daySpecificStudyHours.findIndex(hours => hours.dayOfWeek === newDayHoursDayOfWeek);
+
+    if (existingIndex !== -1) {
+      // Update existing hours
+      const updatedHours = [...daySpecificStudyHours];
+      updatedHours[existingIndex] = {
+        dayOfWeek: newDayHoursDayOfWeek,
+        studyHours: newDayHoursStudyHours,
+        isActive: true
+      };
+      setDaySpecificStudyHours(updatedHours);
+    } else {
+      // Add new day-specific hours
+      const newHours: DaySpecificStudyHours = {
+        dayOfWeek: newDayHoursDayOfWeek,
+        studyHours: newDayHoursStudyHours,
+        isActive: true
+      };
+      setDaySpecificStudyHours([...daySpecificStudyHours, newHours]);
+    }
+
+    // Reset form
+    setShowDaySpecificHoursForm(false);
+    setEditingDayHours(null);
+    setNewDayHoursDayOfWeek(1);
+    setNewDayHoursStudyHours(4);
+  };
+
+  const handleEditDaySpecificHours = (hours: DaySpecificStudyHours) => {
+    setEditingDayHours(hours);
+    setNewDayHoursDayOfWeek(hours.dayOfWeek);
+    setNewDayHoursStudyHours(hours.studyHours);
+    setShowDaySpecificHoursForm(true);
+  };
+
+  const handleDeleteDaySpecificHours = (dayOfWeek: number) => {
+    const updatedHours = daySpecificStudyHours.filter(hours => hours.dayOfWeek !== dayOfWeek);
+    setDaySpecificStudyHours(updatedHours);
+  };
+
+  const handleToggleDayHoursActive = (dayOfWeek: number) => {
+    const updatedHours = daySpecificStudyHours.map(hours =>
+      hours.dayOfWeek === dayOfWeek
+        ? { ...hours, isActive: !hours.isActive }
+        : hours
+    );
+    setDaySpecificStudyHours(updatedHours);
+  };
+
   const formatTimeDisplay = (hour: number): string => {
     return hour === 0 ? '12 AM' : hour < 12 ? `${hour} AM` : hour === 12 ? '12 PM' : `${hour - 12} PM`;
   };
