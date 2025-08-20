@@ -223,7 +223,8 @@ const Settings: React.FC<SettingsProps> = ({
       enableNotifications: settings.enableNotifications !== false,
       studyPlanMode,
       dateSpecificStudyWindows,
-      daySpecificStudyWindows
+      daySpecificStudyWindows,
+      daySpecificStudyHours
     });
   };
 
