@@ -925,7 +925,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
         plannedTasks: [newSession],
         totalStudyHours: sessionDuration,
         isOverloaded: false,
-        availableHours: settings.dailyAvailableHours
+        availableHours: getDaySpecificDailyHours(newPlanDate, settings)
       });
 
       // Also remove from original plan if it exists
