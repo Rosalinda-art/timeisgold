@@ -58,6 +58,9 @@ const Settings: React.FC<SettingsProps> = ({
   const [newDayHoursDayOfWeek, setNewDayHoursDayOfWeek] = useState(1); // Default to Monday
   const [newDayHoursStudyHours, setNewDayHoursStudyHours] = useState(4);
 
+  // State for toggling day-specific hours section visibility
+  const [showDaySpecificHoursSection, setShowDaySpecificHoursSection] = useState(false);
+
   // Update local state when settings prop changes (e.g., on initial load or external update)
   useEffect(() => {
     setDailyAvailableHours(settings.dailyAvailableHours);
