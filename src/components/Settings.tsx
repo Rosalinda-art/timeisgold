@@ -78,10 +78,11 @@ const Settings: React.FC<SettingsProps> = ({
     setDaySpecificStudyWindows(settings.daySpecificStudyWindows || []);
     setDaySpecificStudyHours(settings.daySpecificStudyHours || []);
 
-    // Keep section expanded if user has day-specific hours configured
-    if (settings.daySpecificStudyHours && settings.daySpecificStudyHours.length > 0) {
-      setShowDaySpecificHoursSection(true);
-    }
+    // Load persisted toggle preference, or default to expanded if user has day-specific hours
+    setShowDaySpecificHoursSection(
+      settings.showDaySpecificHoursSection ??
+      ((settings.daySpecificStudyHours && settings.daySpecificStudyHours.length > 0) || false)
+    );
   }, [settings]);
 
   // Enhanced validation functions with better error prevention
