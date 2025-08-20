@@ -574,6 +574,7 @@ const Settings: React.FC<SettingsProps> = ({
         </div>
 
         {/* Day-Specific Study Hours */}
+        {showDaySpecificHoursSection && (
         <div className="backdrop-blur-sm bg-white/50 dark:bg-white/5 rounded-2xl p-5 border border-white/20 dark:border-white/10 transition-all duration-300 hover:bg-white/60 dark:hover:bg-white/10">
           <div className="flex items-center justify-between mb-3">
             <label className="flex text-sm font-semibold text-gray-700 dark:text-gray-200 items-center space-x-2">
@@ -715,6 +716,7 @@ const Settings: React.FC<SettingsProps> = ({
             </div>
           )}
         </div>
+        )}
 
         {/* Buffer Days */}
         <div>
