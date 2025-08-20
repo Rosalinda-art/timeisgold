@@ -542,12 +542,23 @@ const Settings: React.FC<SettingsProps> = ({
           <div className="space-y-6">
         {/* Daily Available Hours */}
         <div className="backdrop-blur-sm bg-white/50 dark:bg-white/5 rounded-2xl p-5 border border-white/20 dark:border-white/10 transition-all duration-300 hover:bg-white/60 dark:hover:bg-white/10">
-              <label htmlFor="dailyHours" className="flex text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2 items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <Clock size={14} className="text-white" />
-                </div>
-            <span>How many hours can you study per day?</span>
-          </label>
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="dailyHours" className="flex text-sm font-semibold text-gray-700 dark:text-gray-200 items-center space-x-2">
+                  <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                    <Clock size={14} className="text-white" />
+                  </div>
+                  <span>How many hours can you study per day?</span>
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowDaySpecificHoursSection(!showDaySpecificHoursSection)}
+                  className="px-3 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-medium rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 flex items-center gap-1.5"
+                  title={showDaySpecificHoursSection ? "Hide day-specific hours" : "Set different hours for specific days"}
+                >
+                  <Calendar size={12} />
+                  {showDaySpecificHoursSection ? 'Hide Day-Specific' : 'Day-Specific Hours'}
+                </button>
+              </div>
               <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">This includes all your study time for the day.</p>
           <input
             type="number"
