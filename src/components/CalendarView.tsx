@@ -8,7 +8,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import { StudyPlan, FixedCommitment, Task, StudySession, UserSettings } from '../types';
 import { BookOpen, Clock, Settings, X, Calendar as CalendarIcon, Brain } from 'lucide-react';
-import { checkSessionStatus, doesCommitmentApplyToDate } from '../utils/scheduling';
+import { checkSessionStatus, doesCommitmentApplyToDate, getDaySpecificDailyHours } from '../utils/scheduling';
 import { getLocalDateString } from '../utils/scheduling';
 import MobileCalendarView from './MobileCalendarView';
 
