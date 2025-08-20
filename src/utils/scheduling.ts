@@ -1271,7 +1271,7 @@ export const generateNewStudyPlan = (
     availableDays.forEach(date => {
       // Calculate committed hours for this date that count toward daily hours
       const committedHours = calculateCommittedHoursForDate(date, fixedCommitments);
-      const availableHoursAfterCommitments = Math.max(0, settings.dailyAvailableHours - committedHours);
+      const availableHoursAfterCommitments = Math.max(0, getDaySpecificDailyHours(date, settings) - committedHours);
 
       dailyRemainingHours[date] = availableHoursAfterCommitments;
       studyPlans.push({
@@ -2042,7 +2042,7 @@ export const generateNewStudyPlan = (
     availableDays.forEach(date => {
       // Calculate committed hours for this date that count toward daily hours
       const committedHours = calculateCommittedHoursForDate(date, fixedCommitments);
-      const availableHoursAfterCommitments = Math.max(0, settings.dailyAvailableHours - committedHours);
+      const availableHoursAfterCommitments = Math.max(0, getDaySpecificDailyHours(date, settings) - committedHours);
 
       dailyRemainingHours[date] = availableHoursAfterCommitments;
       studyPlans.push({
@@ -2342,7 +2342,7 @@ export const generateNewStudyPlan = (
   availableDays.forEach(date => {
     // Calculate committed hours for this date that count toward daily hours
     const committedHours = calculateCommittedHoursForDate(date, fixedCommitments);
-    const availableHoursAfterCommitments = Math.max(0, settings.dailyAvailableHours - committedHours);
+    const availableHoursAfterCommitments = Math.max(0, getDaySpecificDailyHours(date, settings) - committedHours);
 
     dailyRemainingHours[date] = availableHoursAfterCommitments;
     studyPlans.push({
@@ -3032,7 +3032,7 @@ export const redistributeAfterTaskDeletion = (
   availableDays.forEach(date => {
     // Calculate committed hours for this date that count toward daily hours
     const committedHours = calculateCommittedHoursForDate(date, fixedCommitments);
-    const availableHoursAfterCommitments = Math.max(0, settings.dailyAvailableHours - committedHours);
+    const availableHoursAfterCommitments = Math.max(0, getDaySpecificDailyHours(date, settings) - committedHours);
 
     dailyRemainingHours[date] = availableHoursAfterCommitments;
     studyPlans.push({
