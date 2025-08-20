@@ -60,7 +60,8 @@ const Settings: React.FC<SettingsProps> = ({
 
   // State for toggling day-specific hours section visibility
   const [showDaySpecificHoursSection, setShowDaySpecificHoursSection] = useState(
-    (settings.daySpecificStudyHours && settings.daySpecificStudyHours.length > 0) || false
+    settings.showDaySpecificHoursSection ??
+    ((settings.daySpecificStudyHours && settings.daySpecificStudyHours.length > 0) || false)
   );
 
   // Update local state when settings prop changes (e.g., on initial load or external update)
