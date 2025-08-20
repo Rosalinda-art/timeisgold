@@ -52,6 +52,12 @@ const Settings: React.FC<SettingsProps> = ({
   const [newDayOverrideStartHour, setNewDayOverrideStartHour] = useState(6);
   const [newDayOverrideEndHour, setNewDayOverrideEndHour] = useState(23);
 
+  // State for day-specific study hours form
+  const [showDaySpecificHoursForm, setShowDaySpecificHoursForm] = useState(false);
+  const [editingDayHours, setEditingDayHours] = useState<DaySpecificStudyHours | null>(null);
+  const [newDayHoursDayOfWeek, setNewDayHoursDayOfWeek] = useState(1); // Default to Monday
+  const [newDayHoursStudyHours, setNewDayHoursStudyHours] = useState(4);
+
   // Update local state when settings prop changes (e.g., on initial load or external update)
   useEffect(() => {
     setDailyAvailableHours(settings.dailyAvailableHours);
