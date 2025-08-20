@@ -118,6 +118,12 @@ export interface DaySpecificStudyWindow {
   isActive: boolean; // Whether this override is active
 }
 
+export interface DaySpecificStudyHours {
+  dayOfWeek: number; // 0=Sunday, 1=Monday, 2=Tuesday, etc.
+  studyHours: number; // Hours available for study on this day
+  isActive: boolean; // Whether this override is active
+}
+
 export interface UserSettings {
   dailyAvailableHours: number;
   workDays: number[]; // Days of week user wants to work (0=Sunday, 1=Monday, etc.)
