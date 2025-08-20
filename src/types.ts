@@ -149,6 +149,8 @@ export interface UserSettings {
   daySpecificStudyWindows?: DaySpecificStudyWindow[]; // Override study windows for specific days of the week
   // Day-specific study hours (optional)
   daySpecificStudyHours?: DaySpecificStudyHours[]; // Override daily study hours for specific days of the week
+  // UI preference for showing day-specific hours section
+  showDaySpecificHoursSection?: boolean; // Whether to show the day-specific hours section in settings
 }
 
 export interface TimerState {
