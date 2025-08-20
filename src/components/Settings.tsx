@@ -452,6 +452,29 @@ const Settings: React.FC<SettingsProps> = ({
     return { isValid: true, message: '' };
   };
 
+  const validateDaySpecificHours = (): { isValid: boolean; message: string } => {
+    if (newDayHoursStudyHours <= 0) {
+      return { isValid: false, message: 'Study hours must be greater than 0.' };
+    }
+    if (newDayHoursStudyHours > 24) {
+      return { isValid: false, message: 'Study hours cannot exceed 24 hours.' };
+    }
+
+    // Check if there's a day-specific window for this day and validate against it
+    const dayWindow = daySpecificStudyWindows.find(w => w.dayOfWeek === newDayHoursDayOfWeek && w.isActive);
+    if (dayWindow) {
+      const windowHours = dayWindow.endHour - dayWindow.startHour;
+      if (newDayHoursStudyHours > windowHours) {
+        return {
+          isValid: false,
+          message: `Study hours (${newDayHoursStudyHours}h) cannot exceed the study window duration (${windowHours}h) for ${getDayName(newDayHoursDayOfWeek)}.`
+        };
+      }
+    }
+
+    return { isValid: true, message: '' };
+  };
+
   const cancelDateSpecificForm = () => {
     setShowDateSpecificForm(false);
     setEditingOverride(null);
