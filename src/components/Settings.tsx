@@ -236,7 +236,8 @@ const Settings: React.FC<SettingsProps> = ({
       studyPlanMode,
       dateSpecificStudyWindows,
       daySpecificStudyWindows,
-      daySpecificStudyHours
+      daySpecificStudyHours,
+      showDaySpecificHoursSection
     });
   };
 
