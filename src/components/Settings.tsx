@@ -251,6 +251,29 @@ const Settings: React.FC<SettingsProps> = ({
 
   const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+  // Handle day-specific hours section toggle with immediate save
+  const handleToggleDaySpecificHoursSection = () => {
+    const newToggleState = !showDaySpecificHoursSection;
+    setShowDaySpecificHoursSection(newToggleState);
+
+    // Immediately save the toggle preference
+    onUpdateSettings({
+      ...settings,
+      dailyAvailableHours,
+      workDays,
+      bufferDays,
+      minSessionLength,
+      bufferTimeBetweenSessions,
+      studyWindowStartHour,
+      studyWindowEndHour,
+      studyPlanMode,
+      dateSpecificStudyWindows,
+      daySpecificStudyWindows,
+      daySpecificStudyHours,
+      showDaySpecificHoursSection: newToggleState
+    });
+  };
+
   // Helper function to check if a setting is disabled
   const isSettingDisabled = (settingKey: string) => {
     return !canChangeSetting(settingKey);
