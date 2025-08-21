@@ -584,7 +584,7 @@ const Settings: React.FC<SettingsProps> = ({
                 </label>
                 <button
                   type="button"
-                  onClick={() => setShowDaySpecificHoursSection(!showDaySpecificHoursSection)}
+                  onClick={handleToggleDaySpecificHoursSection}
                   className="px-3 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-medium rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 flex items-center gap-1.5"
                   title={showDaySpecificHoursSection ? "Hide day-specific hours" : "Set different hours for specific days"}
                 >
